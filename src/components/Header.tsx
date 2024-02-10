@@ -81,7 +81,7 @@ function Header() {
         <DropdownMenuItem onClick={() => setTheme("light")}>
           Light
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
+        <DropdownMenuItem onClick={() => setTheme("light")}>
           Dark
         </DropdownMenuItem>
       </DropdownMenuContent>
