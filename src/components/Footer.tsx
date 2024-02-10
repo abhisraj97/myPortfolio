@@ -1,23 +1,52 @@
-import Link from 'next/link'
-import React from 'react'
+"use client";
+
+import Link from "next/link";
+import React from "react";
+import { motion } from "framer-motion";
+
+const navbarVariants = {
+  hidden: { opacity: 0, y: -200 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.3 }, y: 0 },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: -100 },
+  visible: { opacity: 1, y: 0 },
+};
 
 function Footer() {
   return (
     <footer>
-    <nav>
-      <div className="nav-links-container">
-        <ul className="nav-links">
-          <li><Link href="/about">About</Link></li>
-          <li><Link href="/experience">Experience</Link></li>
-          <li><Link href="/projects">Projects</Link></li>
-          <li><Link href="/Certificates">Certificates</Link></li>
-          <li><Link href="/contact">Contact</Link></li>
-        </ul>
-      </div>
-    </nav>
-    <p>Copyright &#169; 2023 Abhishek Rajput. All Rights Reserved.</p>
-  </footer>
-  )
+      <motion.nav initial="hidden" animate="visible" variants={navbarVariants}>
+        <div className="nav-links-container">
+          <motion.ul variants={navbarVariants} className="nav-links">
+            <motion.li variants={itemVariants}>
+              <Link href="/about">About</Link>
+            </motion.li>
+            <motion.li variants={itemVariants}>
+              <Link href="/experience">Skills</Link>
+            </motion.li>
+            <motion.li variants={itemVariants}>
+              <Link href="/projects">Projects</Link>
+            </motion.li>
+            <motion.li variants={itemVariants}>
+              <Link href="/Certificates">Certificates</Link>
+            </motion.li>
+            <motion.li variants={itemVariants}>
+              <Link href="/contact">Contact</Link>
+            </motion.li>
+          </motion.ul>
+        </div>
+      </motion.nav>
+      <motion.p
+        initial={{ opacity: 0, x: 100 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 2 }}
+      >
+        Copyright &#169; 2023 Abhishek Rajput. All Rights Reserved.
+      </motion.p>
+    </footer>
+  );
 }
 
-export default Footer
+export default Footer;
